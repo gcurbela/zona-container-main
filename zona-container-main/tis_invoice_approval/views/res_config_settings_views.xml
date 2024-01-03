@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit_invoice_approval" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.invoice.approval</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="40"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@data-key='account']/div[4]" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box" id="invoice_approvals">
+                    <div class="o_setting_left_pane">
+                        <field name="approvals"/>
+                    </div>
+                    <div class="o_setting_right_pane" id="approvals_settings">
+                        <label for="approvals"/>
+                        <div class="text-muted">
+                            Set approvers for invoice validation
+                        </div>
+                        <div class="content-group">
+                            <div class="mt8">
+                                <button type="action" name="%(tis_invoice_approval.action_invoice_approvals)d"
+                                        string="Invoice Approvals" class="btn-link" icon="fa-arrow-right"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

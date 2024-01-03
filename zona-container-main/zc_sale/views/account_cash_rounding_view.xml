@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_cash_rouding_zc_form" model="ir.ui.view">
+            <field name="name">account.cash.rouding.zc.form</field>
+            <field name="model">account.cash.rounding</field>
+            <field name="inherit_id" ref="account.rounding_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='rounding_method']" position="after">
+                    <field name="predefinido_en_ventas"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

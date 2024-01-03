@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_inherit_invoice_approval" model="ir.ui.view">
+        <field name="name">view.move.form.inherit.invoice.approval</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_approve" type="object" string="Aprobar"
+                        attrs="{'invisible':['|','|','|', ('is_validated', '=', True),('is_approval', '=', False),('hide_approve_button', '=', True), ('move_type','!=','out_refund')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="is_approval" invisible="1"/>
+                <field name="hide_approve_button" invisible="1"/>
+            </xpath>
+            <xpath expr="//page[@name='other_info']" position="after">
+                <page name="approvals" string="Approvals"
+                      attrs="{'invisible':[('is_approval', '=', False)]}">
+                    <field name="approver_validate_ids">
+                        <tree string="Approvers" editable="bottom">
+                            <field name="approver_id" widget='many2one_avatar_user' width="50%"/>
+                            <field name="is_validated"/>
+                        </tree>
+                    </field>
+                    <field name="is_validated" invisible="1"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

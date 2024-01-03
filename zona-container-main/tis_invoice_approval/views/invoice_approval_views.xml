@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_invoice_approval_tree" model="ir.ui.view">
+        <field name="name">invoice.approval.tree.view</field>
+        <field name="model">invoice.approval</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_invoice_approval_form" model="ir.ui.view">
+        <field name="name">invoice.approval.form.view</field>
+        <field name="model">invoice.approval</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <div class="oe_edit_only">
+                            <label for="name"/>
+                        </div>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page name="approvals" string="Approvals">
+                            <field name="invoice_approver_ids">-->
+                                <tree string="Approvers" editable="bottom">
+                                    <field name="approval_id" invisible="1"/>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="approver_id" widget='many2one_avatar_user' width="50%"/>
+                                    <field name="is_required"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_invoice_approvals" model="ir.actions.act_window">
+        <field name="name">Invoice Approvals</field>
+        <field name="res_model">invoice.approval</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="search_view_id" ref="view_currency_search"/>-->
+        <!--        <field name="context">{'active_test': False}</field>-->
+    </record>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_invoice_approval,access_invoice_approval,model_invoice_approval,,1,1,1,1
+access_invoice_approval_line,access_invoice_approval_line,model_invoice_approval_line,,1,1,1,1
+access_invoice_approval_validate,access_invoice_approval_validate,model_invoice_approval_validate,,1,1,1,1
